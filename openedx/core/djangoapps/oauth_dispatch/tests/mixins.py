@@ -1,3 +1,4 @@
+import pytest
 """
 OAuth Dispatch test mixins
 """
@@ -100,7 +101,7 @@ class AccessTokenMixin(object):
         # now we should assert that the claim is indeed
         # expired
         if should_be_expired:
-            with self.assertRaises(ExpiredSignatureError):
+            with pytest.raises(ExpiredSignatureError):
                 _decode_jwt(verify_expiration=True)
 
         return payload
